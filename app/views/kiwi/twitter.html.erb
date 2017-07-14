@@ -1,6 +1,6 @@
 <%= form_tag('/suggestions') do |f| %>
-	Usuario de Twitter <%= f.text_field :twitter_handle %><br />
-	<%= f.submit %>
+	Usuario de Twitter <%= text_field_tag 'twitter_handler' %><br />
+	<%= submit_tag "Enviar" %>
 <% end %>
 
 <p>TESSSSTTTTT</p>
