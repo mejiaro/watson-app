@@ -5,5 +5,5 @@ Rails.application.routes.draw do
 
   match '/debug', to: 'home#debug', via: [:get, :post]
   match '/social-sign-in/twitter', to: 'home#twitter', via: [:get, :post]
-  match '/suggestions' to: 'home#suggestions', via: [:get, :post]
+  match '/suggestions', to: 'home#suggestions', via: [:get, :post]
 end
