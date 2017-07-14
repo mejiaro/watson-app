@@ -15,6 +15,8 @@ class KiwiController < ApplicationController
 	  config.consumer_secret = "8q0LffeM9OtCkQu3dP59Qm9SdOIlaMldVHkkRGthq76PY0JqDd"
 	end
 
+	p twitter_handle
+
 	@twit = client.user_timeline(twitter_handle, options = {:count => 200})
 
 
