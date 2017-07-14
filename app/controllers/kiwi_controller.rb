@@ -8,6 +8,7 @@ class KiwiController < ApplicationController
   end
 
   def suggestions
+  	twitter_handle = params[:twitter_handle]
   	#this needs some refactoring bae
   	client = Twitter::REST::Client.new do |config|
 	  config.consumer_key    = "KzNBGq42kktMYUgKvdL4mLjIG"
