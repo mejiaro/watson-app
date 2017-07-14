@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'shopify_app'
 
+gem 'twitter'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
