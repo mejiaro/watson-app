@@ -28,14 +28,13 @@ body{
 
 }
     
-}
 .contact-section{
   padding-top: 40px;
   margin-left:28em;
 }
 
 .line{
-	border-top: 1px solid rgba(255,255,255,.3);;
+	border-top: 1px solid rgba(255,255,255,.3);
 	margin-top: 1%;
 	box-sizing: border-box;
 }
