@@ -16,6 +16,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!-- Custom Theme files -->
 <!-- //Custom Theme files -->
 <!-- web font -->
+<%= stylesheet_link_tag "style" %>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->
 <link href="//fonts.googleapis.com/css?family=Six+Caps" rel="stylesheet">
 <!-- //web font -->
@@ -28,9 +29,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		
 			<div class="w3ls-tabs">
 			<%= image_tag("t3.jpg", class: "image2")%>
-			
-				
-				<form method="get" action="/suggestions"> 
+				<form method="get" action="/suggestions">
+					<p><strong>Selecciona tu sexo.</strong></p>
+					<select name="gender" class="list">
+					  <option value="m" selected="selected">Hombre</option>
+					  <option value="f">Mujer</option>
+					</select>
 					<input type=text name="twitter_handle" placeholder="@username" required="">
 					<input type="submit" value="Enviar">
 					<div class="clearfix"> </div> 

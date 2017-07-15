@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html>
+<head>
+	<%= stylesheet_link_tag "style" %>
+</head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 </canvas><canvas id="personalityChart"></canvas>
@@ -18,7 +21,12 @@
 	      		 "<%= @response["personality"][3]["percentile"] * 100 %>",
 	      		 "<%= @response["personality"][4]["percentile"] * 100 %>"
 	      		],
-	      backgroundColor: "rgba(51, 102, 15,0.4)"
+	      backgroundColor: "rgba(51, 102, 15,0.4)",
+	      backgroundColor: 'rgba(54, 162, 235, 0.2)',
+	      backgroundColor: "rgba(51, 12, 15,0.4)",
+	      backgroundColor: "rgba(251, 102, 15,0.4)",
+	      backgroundColor: "rgba(51, 102, 215,0.4)",
+
 	    }]
 	  },
 	  options: { 
@@ -50,6 +58,11 @@
 <% @recommended.each do |gift| %>
 	<p><%= gift.title %></p>
 	<p><%= gift.tags %></p>
+	<div style="max-width: 200px">
+		<%= image_tag(gift.images.first.src) %>
+	</div>
+
+
 <% end %>
 </body>
 </html>
