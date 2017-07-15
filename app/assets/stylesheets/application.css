@@ -71,6 +71,9 @@ h2 {
 	line-height: 0.9em;
 }
 /*-- main --*/
+a{
+    color: #828282;
+}
 .image2{
     margin-left: 4em;
 }

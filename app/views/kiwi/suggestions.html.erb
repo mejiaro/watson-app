@@ -3,6 +3,8 @@
 <head>
 </head>
 <body>
+<%= stylesheet_link_tag "application" %>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 </canvas><canvas id="personalityChart"></canvas>
 <script type="text/javascript">
@@ -11,9 +13,11 @@
 	  type: 'bar',
 	  data: {
 	    labels: ['Openness', 'Extraversion', 'Emotional Range', 'Conscientiousness', 'Agreeableness'],
+	    fontSize: "20",
 	    datasets: [{
           pointHighlightFill : "white",
 	      label: 'Percentil',
+
 	      data: ["<%= @response["personality"][0]["percentile"] * 100 %>",
 	      		 "<%= @response["personality"][1]["percentile"] * 100 %>",
 	      		 "<%= @response["personality"][2]["percentile"] * 100 %>",
@@ -27,17 +31,20 @@
 	  options: { 
         legend: {
             labels: {
-                fontColor: "white"                
+                fontColor: "white" 
+                              
             }
         },
 
         scale: {
         	gridLines: {
         		color: "white"
+        		
         	},
 
         	pointLabels: {
             backgroundColor: "white"
+           
           }
         }
 
@@ -49,16 +56,89 @@
 
 
 </script>
+<div class="line"></div>
+
+<div class="product-content">
 <div style="color: white">
 	<% @recommended.each do |gift| %>
-		<p><%= gift.title %></p>
+		<div class="product-title"><p><%= gift.title %></p></div>
 		<p><%= gift.tags %></p>
-		<div style="max-width: 200px">
+		<div class="product-price"><p>$<%= gift.variants.first.price %> </p></div>
+		<div class="link-a"> <p><%= link_to "Comprar en la tienda",  "https://www.everydaystore.net/products/#{gift.handle}" %> </p></div>
+		<div style="max-width: 250px">
 			<%= image_tag(gift.images.first.src) %>
 		</div>
 	<% end %>
 </div>
+</div>
+<style>
 
+.line{
+	border-top: 1px solid rgba(255,255,255,.1);
+	margin-top: 1em;
+}
+
+.product-price{
+	font-size: 21.5px;
+	margin-bottom: .3em;
+    margin-top: .3em;
+}
+
+.product-title {
+	font-size: 21.5px;
+	margin-bottom: .3em;
+	margin-top: .3em;
+
+}
+
+.product-content {
+	font-family: 'Open Sans', 'sans serif';
+	margin-left: 5em;
+}
+
+.link-a a{
+	color: #000;
+	text-decoration: none;
+	font-size: 21.5px;
+	border: 1px solid rgba(255,255,255, 1);
+	display: block;
+	padding: 8px;
+	float: left;
+	border-radius: 10px;
+	background-color: rgba(255,255,255, .8);
+	margin-bottom: .5em;
+	margin-top: .5em;
+}
+
+.link-a a:hover{
+	color: #000;
+	text-decoration: none;
+	font-size: 21.5px;
+	border: 1px solid rgba(255,255,255, .2);
+	display: block;
+	padding: 8px;
+	float: left;
+	border-radius: 10px;
+	background-color: rgba(255,255,255, .2);
+	margin-bottom: .5em;
+	margin-top: .5em;
+}
+
+.link-a a:active{
+	color: #000;
+	text-decoration: none;
+	font-size: 21.5px;
+	border: 1px solid rgba(255,255,255, .2);
+	display: block;
+	padding: 8px;
+	float: left;
+	border-radius: 10px;
+	background-color: rgba(255,255,255, .2);
+	margin-bottom: .5em;
+	margin-top: .5em;
+}
+
+</style>
 
 </body>
 </html>
