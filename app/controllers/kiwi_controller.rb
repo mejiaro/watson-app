@@ -30,10 +30,13 @@ class KiwiController < ApplicationController
 	end
 
 	#convertir el texto a un archivo
-	prefix = @d
-	suffix = '.txt'
 
-	file = Tempfile.new [prefix, suffix], "#{Rails.root}/tmp"
+	file = Tempfile.new("#{username}.txt")
+	f << @d
+	f.write(@d)
+	f.close
+
+
 
 	#mandar el request al API
 
@@ -42,7 +45,7 @@ class KiwiController < ApplicationController
 	request.basic_auth("7f18eccd-60c9-4b5d-a489-ce86e6b696fa", "DvYUxuqW6iRc")
 	request.content_type = "text/plain;charset=utf-8"
 	request.body = ""
-	request.body << File.read(file).delete("\r\n")
+	request.body << File.read(file.path).delete("\r\n")
 
 	req_options = {
 	  use_ssl: uri.scheme == "https",
