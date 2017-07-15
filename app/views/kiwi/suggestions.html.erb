@@ -1,1 +1,45 @@
-<%= @request %>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+</canvas><canvas id="personalityChart"></canvas>
+<script type="text/javascript">
+	var ctx = document.getElementById('personalityChart').getContext('2d')
+	var personalityChart = new Chart(ctx, {
+	  type: 'bar',
+	  data: {
+	    labels: ['Openness', 'Extraversion', 'Emotional Range', 'Conscientiousness', 'Agreeableness'],
+	    datasets: [{
+          pointHighlightFill : "black",
+	      label: 'Percentil',
+	      data: ["<%= @response["personality"][0]["percentile"] * 100 %>",
+	      		 "<%= @response["personality"][1]["percentile"] * 100 %>",
+	      		 "<%= @response["personality"][2]["percentile"] * 100 %>",
+	      		 "<%= @response["personality"][3]["percentile"] * 100 %>",
+	      		 "<%= @response["personality"][4]["percentile"] * 100 %>"
+	      		],
+	      backgroundColor: "rgba(255,255,255,0.4)"
+	    }]
+	  },
+	  options: { 
+        legend: {
+            labels: {
+                fontColor: "white"                
+            }
+        },
+
+        scale: {
+        	gridLines: {
+        		color: "white"
+        	},
+
+        	pointLabels: {
+            backgroundColor: "black"
+          }
+        }
+
+
+    }
+	});
+	Chart.defaults.global.defaultFontColor = '#fff';
+
+
+
+</script>

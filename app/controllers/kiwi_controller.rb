@@ -6,7 +6,14 @@ class KiwiController < ApplicationController
   	p params
   end
 
+  def authorize
+  	#@session = ShopifyAPI::Session.setup(api_key: "5857c42a164d7b0fb38ef5464bd9ec0e", secret: "c23568d568a5e83d7fbcfc6addba3367")
+  	#
+  end
+
   def twitter
+  	
+
   	
   end
 
@@ -19,7 +26,7 @@ class KiwiController < ApplicationController
 	end
 
 	#un arreglo con 200 tweets
-	@tweets = client.user_timeline(username, {:count =>  200})
+	@tweets ||= client.user_timeline(username, {:count =>  200})
 
 	# @d tiene todo el texto de los tweets
 	@d = ""
@@ -55,9 +62,16 @@ class KiwiController < ApplicationController
 
 	p "++++++++++++++++++++++++++++"
 
-	p response.body
+	@response = JSON.parse(response.body)
 
-	@request = " "
+	shop_url = "https://2cc77d6b5fd7fbf06a21f6897da4a7da:18ee84144d420826e794aa4f9809ce1a@piedritas-inc.myshopify.com/admin"
+  	ShopifyAPI::Base.site = shop_url
+
+  	p "---------------------------"
+
+  	p ShopifyAPI::Product.all
+
+	
 
 
 
