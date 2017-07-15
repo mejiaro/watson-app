@@ -12,7 +12,7 @@
 	  data: {
 	    labels: ['Openness', 'Extraversion', 'Emotional Range', 'Conscientiousness', 'Agreeableness'],
 	    datasets: [{
-          pointHighlightFill : "black",
+          pointHighlightFill : "white",
 	      label: 'Percentil',
 	      data: ["<%= @response["personality"][0]["percentile"] * 100 %>",
 	      		 "<%= @response["personality"][1]["percentile"] * 100 %>",
@@ -20,48 +20,45 @@
 	      		 "<%= @response["personality"][3]["percentile"] * 100 %>",
 	      		 "<%= @response["personality"][4]["percentile"] * 100 %>"
 	      		],
-	      backgroundColor: "rgba(51, 102, 15,0.4)",
-	      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-	      backgroundColor: "rgba(51, 12, 15,0.4)",
-	      backgroundColor: "rgba(251, 102, 15,0.4)",
-	      backgroundColor: "rgba(51, 102, 215,0.4)",
+	      backgroundColor: "rgba(186, 53, 40, 0.4)",
 
 	    }]
 	  },
 	  options: { 
         legend: {
             labels: {
-                fontColor: "black"                
+                fontColor: "white"                
             }
         },
 
         scale: {
         	gridLines: {
-        		color: "black"
+        		color: "white"
         	},
 
         	pointLabels: {
-            backgroundColor: "black"
+            backgroundColor: "white"
           }
         }
 
 
     }
 	});
-	Chart.defaults.global.defaultFontColor = 'black';
+	Chart.defaults.global.defaultFontColor = 'white';
 
 
 
 </script>
+<div style="color: white">
+	<% @recommended.each do |gift| %>
+		<p><%= gift.title %></p>
+		<p><%= gift.tags %></p>
+		<div style="max-width: 200px">
+			<%= image_tag(gift.images.first.src) %>
+		</div>
+	<% end %>
+</div>
 
-<% @recommended.each do |gift| %>
-	<p><%= gift.title %></p>
-	<p><%= gift.tags %></p>
-	<div style="max-width: 200px">
-		<%= image_tag(gift.images.first.src) %>
-	</div>
 
-
-<% end %>
 </body>
 </html>
