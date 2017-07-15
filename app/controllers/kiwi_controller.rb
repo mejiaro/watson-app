@@ -60,21 +60,63 @@ class KiwiController < ApplicationController
 	  http.request(request)
 	end
 
-	p "++++++++++++++++++++++++++++"
-
 	@response = JSON.parse(response.body)
 
-	shop_url = "https://2cc77d6b5fd7fbf06a21f6897da4a7da:18ee84144d420826e794aa4f9809ce1a@piedritas-inc.myshopify.com/admin"
+	shop_url = "https://#{ENV['SF_API_KEY']}:#{ENV['SF_PASSWORD']}@#{ENV['SF_SHOP_NAME']}/admin"
   	ShopifyAPI::Base.site = shop_url
 
-  	p "---------------------------"
+  	if params[:gender] == "m"
+  		products = ShopifyAPI::Product.find(:all, :params => {:ids=> "9761348801, 9698695233, 8805411457, 9097283073, 9703216897, 9651167489"}) 
+  	else
+  		products = ShopifyAPI::Product.find(:all, :params => {:ids=> "9564500929, 9739937857, 9047881281, 9760808321, 9695974913, 9739803841"}) 
+  	end
 
-  	p ShopifyAPI::Product.all
+  	personality = []
 
-	
+  	if @response["personality"][0]["percentile"].to_f < 0.50
+  		op = "Openness-Low"
+  	else
+  		op = "Openness-High"
+  	end
+
+  	personality << op
+
+  	if @response["personality"][1]["percentile"].to_f < 0.50
+  		ex = "Extraversion-Low"
+  	else
+  		ex = "Extraversion-High"
+  	end
+
+  	personality << ex
+
+  	if @response["personality"][3]["percentile"].to_f < 0.50
+  		co = "Consientiusness-Low"
+  	else
+  		co = "Consientiusness-High"
+  	end
+
+  	personality << co
+
+  	if @response["personality"][4]["percentile"].to_f < 0.50
+  		ag = "Agreeableness-Low"
+  	else
+  		ag = "Agreeableness-High"
+  	end
+
+  	personality << ag
+
+  	@recommended = []  	
+
+  	products.each do |product|
+  		intersection = product.tags.split(',') & personality
+  		if intersection.any?
+  			@recommended << product
+  		end
+  	end
 
 
 
 
-  end
+
+   end
 end
