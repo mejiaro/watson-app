@@ -32,9 +32,9 @@ class KiwiController < ApplicationController
 	#convertir el texto a un archivo
 
 	file = Tempfile.new("#{username}.txt")
-	f << @d
-	f.write(@d)
-	f.close
+	file << @d
+	file.write(@d)
+	file.close
 
 
 
