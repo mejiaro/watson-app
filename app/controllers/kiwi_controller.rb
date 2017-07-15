@@ -18,8 +18,6 @@ class KiwiController < ApplicationController
 	  config.consumer_secret = "8q0LffeM9OtCkQu3dP59Qm9SdOIlaMldVHkkRGthq76PY0JqDd"
 	end
 
-	p username
-
 	#un arreglo con 200 tweets
 	@tweets = client.user_timeline(username, {:count =>  200})
 
@@ -55,7 +53,9 @@ class KiwiController < ApplicationController
 	  http.request(request)
 	end
 
-	@request = request
+	p "++++++++++++++++++++++++++++"
+
+	p request
 
 
 
