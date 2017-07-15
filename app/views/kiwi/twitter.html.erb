@@ -1,7 +1,3 @@
-
-
-<p>TESSSSTTTTT</p>
-
 <!DOCTYPE html>
 <html>
 
@@ -22,7 +18,7 @@
 			<div class="container">
 				<%= form_tag('/suggestions') do |f| %>
 					<div class="form-group1">
-						<%= text_field_tag 'twitter_handle', class: "form-control", placeholder: "Nombre de usuario" %>
+						<%= text_field_tag 'twitter_handle', nil, class: "form-control", placeholder: "Nombre de usuario" %>
 					</div>
 					<div class="form-group2">
 						<%= submit_tag "Enviar" %>
