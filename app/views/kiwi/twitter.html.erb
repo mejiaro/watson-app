@@ -1,6 +1,37 @@
-<%= form_tag('/suggestions') do |f| %>
-	Usuario de Twitter <%= text_field_tag 'twitter_handle' %><br />
-	<%= submit_tag "Enviar" %>
-<% end %>
+
 
 <p>TESSSSTTTTT</p>
+
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title></title>
+		<meta chartset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+		<link rel="stylesheet" href="estilo.css">
+    	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		</head>	
+	 <body>
+	 	<div class="section-content">
+		<h1 class="section-header"><span class="content-header">Los mejores productos recomendados para tí de nuestra tienda.</span></h1>
+		 <div class="line"></div>
+				<h3 class="content-header-2">Usuario para identificar tus preferencias.</h3>
+		</div>
+		<div class="contact-section">
+			<div class="container">
+				<%= form_tag('/suggestions') do |f| %>
+					<div class="form-group1">
+						<%= text_field_tag 'twitter_handle', class: "form-control", placeholder: "Nombre de usuario" %>
+					</div>
+					<div class="form-group2">
+						<%= submit_tag "Enviar" %>
+					</div>
+				<% end %>
+			 </div>
+		 </div>
+	</body>
+</html>
+
+
+
