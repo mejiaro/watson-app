@@ -55,7 +55,7 @@ class KiwiController < ApplicationController
 
 	p "++++++++++++++++++++++++++++"
 
-	p request.body
+	p response
 
 	@request = " "
 
