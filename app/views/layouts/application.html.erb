@@ -25,6 +25,13 @@
   </head>
 
     <body>
+    <header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a href="/analyse" class="brand-logo"><i class="material-icons">bubble_chart</i>Merlin</a></div>
+        </div>
+      </nav>
+</header>
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
@@ -39,13 +46,22 @@
     	<footer class="page-footer">
           <div class="footer-copyright">
             <div class="container">
-            © 2017 Copyright Text
-            <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+            © 2017
+            <a href="https://github.com/mejiaro/watson-app" class="grey-text text-lighten-4 right" href="#!">Github</a>
             </div>
           </div>
         </footer>
 
 
     </body>
+    	
+    </script>
+    <% if flash.any? %>
+		  <script type="text/javascript">
+		    <% flash.each do |message_type, message| %>
+		      Materialize.toast("<%= message.to_s %>", 4500)
+		    <% end %>
+		  </script>
+		<% end %>
 
 </html>

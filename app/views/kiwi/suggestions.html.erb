@@ -1,142 +1,110 @@
-<header>
-      <nav class="top-nav">
-        <div class="container">
-          <div class="nav-wrapper"><a class="brand-logo"><i class="material-icons">bubble_chart</i>Merlin</a></div>
-        </div>
-      </nav>
-</header>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
-</canvas><canvas id="personalityChart"></canvas>
-<script type="text/javascript">
-	var ctx = document.getElementById('personalityChart').getContext('2d')
-	var personalityChart = new Chart(ctx, {
-	  type: 'bar',
-	  data: {
-	    labels: ['Openness', 'Extraversion', 'Emotional Range', 'Conscientiousness', 'Agreeableness'],
-	    fontSize: "20",
-	    datasets: [{
-          pointHighlightFill : "gray",
-	      label: 'Percentil',
-
-	      data: ["<%= @response["personality"][0]["percentile"] * 100 %>",
-	      		 "<%= @response["personality"][1]["percentile"] * 100 %>",
-	      		 "<%= @response["personality"][2]["percentile"] * 100 %>",
-	      		 "<%= @response["personality"][3]["percentile"] * 100 %>",
-	      		 "<%= @response["personality"][4]["percentile"] * 100 %>"
-	      		],
-	      backgroundColor: "rgba(186, 53, 40, 0.4)",
-
-	    }]
-	  },
-	  options: { 
-        legend: {
-            labels: {
-                fontColor: "gray" 
-                              
-            }
-        },
-
-        scale: {
-        	gridLines: {
-        		color: "gray"
-        		
-        	},
-
-        	pointLabels: {
-            backgroundColor: "gray"
-           
-          }
-        }
-
-
-    }
-	});
-	Chart.defaults.global.defaultFontColor = 'gray';
-
-
-
-</script>
-<div class="line"></div>
-
-<div class="product-content">
-<div style="color: white">
-	<% @recommended.each do |gift| %>
-		<div class="product-title"><p><%= gift.title %></p></div>
-		<p><%= gift.tags %></p>
-		<div class="product-price"><p>$<%= gift.variants.first.price %> </p></div>
-		<div class="link-a"> <p><%= link_to "Comprar en la tienda",  "https://www.everydaystore.net/products/#{gift.handle}" %> </p></div>
-		<div style="max-width: 250px">
-			<%= image_tag(gift.images.first.src) %>
+<main>
+	<div class="container">
+		<div class="row">
+			
 		</div>
-	<% end %>
-</div>
-</div>
-<style>
+		<div class="row">
+			
+			<div class="col s12 m8 offset-m2 l6 offset-l3">
+				<p>Here's the profile we found:</p>
+		        <div class="card-panel grey lighten-5 z-depth-1">
+		          <div class="row valign-wrapper">
+		            <div class="col s2">
+		              <img src="<%= @profile_pic_url %>" alt="" class="circle responsive-img">
+		            </div>
+		            <div class="col s10">
+		              <span class="black-text">
+		                <strong><%= @name %></strong>
+		              </span>
+		              <br>
+		              <span class="black-text">
+		                <%= @bio %>
+		              </span>
+		            </div>
+		          </div>
+		        </div>
+      		</div> 
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
+		<div class="row">
+			<div class="col s12 m8 offset-m2 l6 offset-l3">
+				<p>Here's the radar chart. Each axis measures one of the <%= link_to 'Big Five personality traits', 'https://en.wikipedia.org/wiki/Big_Five_personality_traits' %>. </p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="s12">
+				<canvas id="personalityChart"></canvas>
+			</div>
+			
+		</div>
+		
+		<script type="text/javascript">
+			var ctx = document.getElementById('personalityChart').getContext('2d')
+			var personalityChart = new Chart(ctx, {
+			  type: 'radar',
+			  data: {
+			    labels: ['Openness', 'Extraversion', 'Emotional Range', 'Conscientiousness', 'Agreeableness'],
+			    fontSize: "18",
+			    datasets: [{
+		          pointHighlightFill : "gray",
+			      label: 'Percentile',
 
-.line{
-	border-top: 1px solid rgba(255,255,255,.1);
-	margin-top: 1em;
-}
+			      data: ["<%= @analysis["personality"][0]["percentile"] * 100 %>",
+			      		 "<%= @analysis["personality"][1]["percentile"] * 100 %>",
+			      		 "<%= @analysis["personality"][2]["percentile"] * 100 %>",
+			      		 "<%= @analysis["personality"][3]["percentile"] * 100 %>",
+			      		 "<%= @analysis["personality"][4]["percentile"] * 100 %>"
+			      		],
+			      backgroundColor: "rgba(186, 53, 40, 0.4)",
 
-.product-price{
-	font-size: 21.5px;
-	margin-bottom: .3em;
-    margin-top: .3em;
-}
+			    }]
+			  },
+			  options: { 
+		        legend: {
+		            labels: {
+		                fontColor: "gray" 
+		                              
+		            }
+		        },
 
-.product-title {
-	font-size: 21.5px;
-	margin-bottom: .3em;
-	margin-top: .3em;
+		        scale: {
+		        	gridLines: {
+		        		color: "gray"
+		        		
+		        	},
 
-}
+		        	pointLabels: {
+		            backgroundColor: "gray"
+		           
+		          }
+		        },
 
-.product-content {
-	font-family: 'Open Sans', 'sans serif';
-	margin-left: 5em;
-}
+		        responsive: true
 
-.link-a a{
-	color: #000;
-	text-decoration: none;
-	font-size: 21.5px;
-	border: 1px solid rgba(255,255,255, 1);
-	display: block;
-	padding: 8px;
-	float: left;
-	border-radius: 10px;
-	background-color: rgba(255,255,255, .8);
-	margin-bottom: .5em;
-	margin-top: .5em;
-}
 
-.link-a a:hover{
-	color: #000;
-	text-decoration: none;
-	font-size: 21.5px;
-	border: 1px solid rgba(255,255,255, .2);
-	display: block;
-	padding: 8px;
-	float: left;
-	border-radius: 10px;
-	background-color: rgba(255,255,255, .2);
-	margin-bottom: .5em;
-	margin-top: .5em;
-}
+		    }
+			});
+			Chart.defaults.global.defaultFontColor = 'gray';
 
-.link-a a:active{
-	color: #000;
-	text-decoration: none;
-	font-size: 21.5px;
-	border: 1px solid rgba(255,255,255, .2);
-	display: block;
-	padding: 8px;
-	float: left;
-	border-radius: 10px;
-	background-color: rgba(255,255,255, .2);
-	margin-bottom: .5em;
-	margin-top: .5em;
-}
 
-</style>
+
+		</script>
+		<div class="line"></div>
+
+		<div class="product-content">
+		<div style="color: white">
+			<% @recommended.each do |gift| %>
+				<div class="product-title"><p><%= gift.title %></p></div>
+				<p><%= gift.tags %></p>
+				<div class="product-price"><p>$<%= gift.variants.first.price %> </p></div>
+				<div class="link-a"> <p><%= link_to "Comprar en la tienda",  "https://www.everydaystore.net/products/#{gift.handle}" %> </p></div>
+				<div style="max-width: 250px">
+					<%= image_tag(gift.images.first.src) %>
+				</div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+</main>
+
 
