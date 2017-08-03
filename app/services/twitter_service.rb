@@ -11,7 +11,7 @@ class TwitterService
 
 	def tweets
 		#gets tweets for that username
-		Rails.cache.fetch('tweets', expires: 10.minutes) do
+		Rails.cache.fetch("#{@username}-tweets", expires: 5.minutes) do
 	      	@client.user_timeline(@username, {:count =>  200})
 	    end
 	end
@@ -32,19 +32,19 @@ class TwitterService
 	end
 
 	def bio
-		Rails.cache.fetch('bio', expires: 10.minutes) do
+		Rails.cache.fetch("#{@username}-bio", expires: 5.minutes) do
 			@client.user(@username).description
 		end
 	end
 
 	def profile_pic_url
-		Rails.cache.fetch('profile_pic_url', expires: 10.minutes) do
+		Rails.cache.fetch("#{@username}-profile_pic_url", expires: 5.minutes) do
 			@client.user(@username).profile_image_url_https('bigger').to_s
 		end
 	end
 
 	def name
-		Rails.cache.fetch('name', expires: 10.minutes) do
+		Rails.cache.fetch("#{@username}-name", expires: 5.minutes) do
 			@client.user(@username).name
 		end
 	end
