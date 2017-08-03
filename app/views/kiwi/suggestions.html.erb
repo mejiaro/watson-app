@@ -97,15 +97,7 @@
 
 		<div class="product-content">
 		<div style="color: white">
-			<% @recommended.each do |gift| %>
-				<div class="product-title"><p><%= gift.title %></p></div>
-				<p><%= gift.tags %></p>
-				<div class="product-price"><p>$<%= gift.variants.first.price %> </p></div>
-				<div class="link-a"> <p><%= link_to "Comprar en la tienda",  "https://www.everydaystore.net/products/#{gift.handle}" %> </p></div>
-				<div style="max-width: 250px">
-					<%= image_tag(gift.images.first.src) %>
-				</div>
-			<% end %>
+			
 		</div>
 		</div>
 	</div>
