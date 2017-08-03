@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-</head>
-<body>
-<%= stylesheet_link_tag "application" %>
-
+<header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a class="brand-logo"><i class="material-icons">bubble_chart</i>Merlin</a></div>
+        </div>
+      </nav>
+</header>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.min.js"></script>
 </canvas><canvas id="personalityChart"></canvas>
 <script type="text/javascript">
@@ -15,7 +15,7 @@
 	    labels: ['Openness', 'Extraversion', 'Emotional Range', 'Conscientiousness', 'Agreeableness'],
 	    fontSize: "20",
 	    datasets: [{
-          pointHighlightFill : "white",
+          pointHighlightFill : "gray",
 	      label: 'Percentil',
 
 	      data: ["<%= @response["personality"][0]["percentile"] * 100 %>",
@@ -31,19 +31,19 @@
 	  options: { 
         legend: {
             labels: {
-                fontColor: "white" 
+                fontColor: "gray" 
                               
             }
         },
 
         scale: {
         	gridLines: {
-        		color: "white"
+        		color: "gray"
         		
         	},
 
         	pointLabels: {
-            backgroundColor: "white"
+            backgroundColor: "gray"
            
           }
         }
@@ -51,7 +51,7 @@
 
     }
 	});
-	Chart.defaults.global.defaultFontColor = 'white';
+	Chart.defaults.global.defaultFontColor = 'gray';
 
 
 
@@ -140,5 +140,3 @@
 
 </style>
 
-</body>
-</html>

@@ -3,7 +3,7 @@ class KiwiController < ApplicationController
   require 'uri'
 
   def debug
-  	p params
+
   end
 
   def authorize

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   match '/debug', to: 'kiwi#debug', via: [:get, :post]
   match '/authorize', to: 'kiwi#authorize', via: [:get, :post]
-  match '/social-sign-in/twitter', to: 'kiwi#twitter', via: [:get, :post]
+  match '/analyse', to: 'kiwi#twitter', via: [:get, :post]
   match '/suggestions', to: 'kiwi#suggestions', via: [:get, :post]
+  match '/test', to: 'kiwi#debug', via: [:get]
 end

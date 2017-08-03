@@ -1,57 +1,77 @@
-
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
-<head>
-<title>Asistente de ventas</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Profile Subscribe Form template Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<!-- //Custom Theme files -->
-<!-- web font -->
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'><!--web font-->
-<link href="//fonts.googleapis.com/css?family=Six+Caps" rel="stylesheet">
-<!-- //web font -->
-</head>
-<body>
-	<!-- main -->
-	<div class="w3agileits-main">
-		<h1>OBTÉN PRODUCTOS RECOMENDADOS PARA TÍ</h1>
-		<div class="agileits-newsletter">
-		
-			<div class="w3ls-tabs">
-			<%= image_tag("t3.jpg", class: "image2")%>
-				<form method="get" action="/suggestions">
-					<p><strong>Selecciona tu sexo.</strong></p>
-					<select name="gender" class="list">
-					  <option value="m" selected="selected">Hombre</option>
-					  <option value="f">Mujer</option>
-					</select>
-					<input type=text name="twitter_handle" placeholder="@username" required="">
-					<input type="submit" value="Enviar">
-					<div class="clearfix"> </div> 
-				</form>
-				<div class="w3ls-social-icons">
-					<a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
-				</div>
-			</div>	
-		</div>	
-	</div>	
-	<!-- //main -->
-	<!-- copyright -->
-	<div class="copyright agileinfo">
-		<p>© 2017 Asistente de ventas . All rights reserved | Design by <a href="" target="_blank">OPTeam</a></p>
+<header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a class="brand-logo"><i class="material-icons">bubble_chart</i>Merlin</a></div>
+        </div>
+      </nav>
+</header>
+<main>
+	<div class="container">
+	<div class="row">
+		<!-- Empty rowwwwww-->
 	</div>
-	<!-- //copyright --> 
-</body>
-</html>
+	<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+	<div class="row">
+		<div class="col s12 m8 offset-m2 l8 offset-l2">
+			<p align="justify">This is a proof of concept of an AI powered, Shopify friendly, sales booster.</p>
 
+			<p>We use IBM's Watson Personality Insights service to try to accurately determine the best products in your shop for anyone with a public Twitter profile. Yes, even the Pope. It can be easily integrated as a private app in any Shopify store.</p>
+		</div>
+	</div>
+	<form method="get" action="/suggestions">
+		<div class="row">
+			<div class="col s12 m8 offset-m2 l8 offset-l2">
+				<%= image_tag("t3.png", :style => "display: block;  margin: auto;")%>
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s10 offset-s1 m8 offset-m2 l6 offset-l3">
+                <select name="gender">
+			      <option value="" disabled selected>Pick your gender</option>
+			      <option value="n">I'd rather not</option>
+			      <option value="m">Male</option>
+			      <option value="f">Female</option>
+			    </select>
+			    <label></label>
+              </div>
+		</div>
+		<div class="row">
+			<div class="input-field col s10 offset-s1 m8 offset-m2 l6 offset-l3">
+				<input id="twitter_handle" type="text" class="validate" name="twitter_handle">
+          		<label for="twitter_handle">Twitter @username</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s4 offset-s4 m2 offset-m5 l6 offset-l3">
+			  <button class="btn waves-effect waves-light" type="submit">Submit
+			    <i class="material-icons right">send</i>
+			  </button>
+			</div>
+		</div>
+
+
+	</form>
+</div>
+<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+	<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+	<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+	<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+	<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+	<div class="row">
+		<!-- Empty rowwwwww-->
+	</div>
+</main>
 
 
