@@ -7,6 +7,12 @@ class KiwiController < ApplicationController
   def suggestions
   	username = params[:twitter_handle]
 
+    captcha = CaptchaService.new(
+        g_recaptcha_response: params[:'g-recaptcha-response'],
+        remote_ip: request.remote_ip
+
+    ).send
+
     ts = TwitterService.new({
       username: username
     })
